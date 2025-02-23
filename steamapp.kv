@@ -1,0 +1,155 @@
+#:kivy 2.1.0
+#:import Factory kivy.factory.Factory
+
+<SteamCalculator>:
+    orientation: "vertical"
+    padding: 20
+    spacing: 10
+    canvas.before:
+        Color:
+            rgba: 0.9, 0.9, 1, 1  # Soft light purple base
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        Color:
+            rgba: 0.7, 0.8, 1, 0.5  # Semi-transparent gradient overlay
+        Rectangle:
+            pos: self.pos
+            size: self.width, self.height / 2
+            source: 'gradient.png'  # Optional: add a gradient image if desired
+
+    # Title
+    Label:
+        text: "Steam Spray Calculator"
+        font_size: 26
+        bold: True
+        color: 0.2, 0.6, 0.8, 1  # Bright teal-blue
+
+    # Main Steam Inputs
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 5
+        canvas.before:
+            Color:
+                rgba: 0.95, 0.85, 0.8, 1  # Warm peach background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: "Main Steam"
+            font_size: 18
+            bold: True
+            color: 0.9, 0.4, 0.2, 1  # Deep orange
+        TextInput:
+            id: flow_ms_input
+            hint_text: "Flow (t/h)"
+            multiline: False
+            background_color: 1, 0.95, 0.9, 1  # Light peach
+            foreground_color: 0.2, 0.2, 0.2, 1
+            hint_text_color: 0.6, 0.4, 0.3, 1
+        TextInput:
+            id: t_ms_input
+            hint_text: "Temperature (°C)"
+            multiline: False
+            background_color: 1, 0.95, 0.9, 1
+            foreground_color: 0.2, 0.2, 0.2, 1
+            hint_text_color: 0.6, 0.4, 0.3, 1
+        TextInput:
+            id: p_ms_input
+            hint_text: "Pressure (bar)"
+            multiline: False
+            background_color: 1, 0.95, 0.9, 1
+            foreground_color: 0.2, 0.2, 0.2, 1
+            hint_text_color: 0.6, 0.4, 0.3, 1
+
+    # Spray Inputs
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 5
+        canvas.before:
+            Color:
+                rgba: 0.8, 0.95, 0.85, 1  # Mint green background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: "Spray"
+            font_size: 18
+            bold: True
+            color: 0.2, 0.7, 0.4, 1  # Forest green
+        TextInput:
+            id: flow_spray_input
+            hint_text: "Flow (t/h)"
+            multiline: False
+            background_color: 0.95, 1, 0.95, 1  # Pale green
+            foreground_color: 0.2, 0.2, 0.2, 1
+            hint_text_color: 0.4, 0.6, 0.4, 1
+        TextInput:
+            id: t_spray_input
+            hint_text: "Temperature (°C)"
+            multiline: False
+            background_color: 0.95, 1, 0.95, 1
+            foreground_color: 0.2, 0.2, 0.2, 1
+            hint_text_color: 0.4, 0.6, 0.4, 1
+        TextInput:
+            id: p_spray_input
+            hint_text: "Pressure (bar)"
+            multiline: False
+            background_color: 0.95, 1, 0.95, 1
+            foreground_color: 0.2, 0.2, 0.2, 1
+            hint_text_color: 0.4, 0.6, 0.4, 1
+
+    # Demand Inputs
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 5
+        canvas.before:
+            Color:
+                rgba: 0.85, 0.9, 1, 1  # Light lavender background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: "Temperature  Demand"
+            font_size: 18
+            bold: True
+            color: 0.5, 0.3, 0.8, 1  # Deep purple
+        TextInput:
+            id: t_demand_input
+            hint_text: "Desired Temperature (°C)"
+            multiline: False
+            background_color: 0.95, 0.95, 1, 1  # Very light purple
+            foreground_color: 0.2, 0.2, 0.2, 1
+            hint_text_color: 0.5, 0.4, 0.7, 1
+        TextInput:
+            id: p_spray_demand_input
+            hint_text: "Pressure of Demanded Spray (bar)"
+            multiline: False
+            background_color: 0.95, 0.95, 1, 1
+            foreground_color: 0.2, 0.2, 0.2, 1
+            hint_text_color: 0.5, 0.4, 0.7, 1
+        TextInput:
+            id: t_spray_demand_input
+            hint_text: "Temperature of Demanded Spray (°C)"
+            multiline: False
+            background_color: 0.95, 0.95, 1, 1
+            foreground_color: 0.2, 0.2, 0.2, 1
+            hint_text_color: 0.5, 0.4, 0.7, 1
+
+    # Calculate Button
+    Button:
+        text: "Calculate"
+        size_hint_y: None
+        height: 50
+        background_normal: ''
+        background_color: 1, 0.4, 0.6, 1  # Vibrant pinkish-red
+        color: 1, 1, 1, 1  # White text
+        font_size: 18
+        bold: True
+        on_press: root.calculate()
+        canvas.before:
+            Color:
+                rgba: 1, 0.6, 0.7, 0.8  # Slightly lighter hover effect
+            Rectangle:
+                pos: self.pos
+                size: self.size
